@@ -5,6 +5,6 @@ on:
 jobs:
   reusable-preview:
     name: call
-    uses: ./.github/workflows/called.yml@main
+    uses: foo-1a/gha-test/.github/workflows/called.yml@main
     with:
       secrets_to_load: key_ro
