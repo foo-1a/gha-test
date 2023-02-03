@@ -1,0 +1,27 @@
+# FIXME: temporarily forked from https://github.com/primait/shared-github-actions/blob/master/.github/workflows/pulumi-preview.yml as upstream is under active development and we're affected by breaking changes
+
+name: Reusable
+on:
+  workflow_call:
+    inputs:
+      secrets_to_load:
+        required: false
+        type: string
+
+jobs:
+  preview:
+    name: Preview
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v3
+      - name: load secrets
+        if: ${{ inputs.secrets_to_load }}
+        run: |
+          for s in ${{ inputs.secrets_to_load }}; do
+            echo ${s}=${{ secrets.${s} }} >> $GITHUB_ENV;
+          done;
+      - run: env

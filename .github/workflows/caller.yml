@@ -1,0 +1,10 @@
+name: Caller
+on: 
+  pull_request:
+
+jobs:
+  reusable-preview:
+    name: call
+    uses: .github/workflows/called.yml@main
+    with:
+      secrets_to_load: key_ro
