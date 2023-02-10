@@ -3,10 +3,9 @@
 name: Reusable
 on:
   workflow_call:
-    inputs:
-      secrets_to_load:
+    secrets:
+      extra-secrets:
         required: false
-        type: string
 
 jobs:
   preview:
@@ -19,9 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: load secrets
-        if: ${{ inputs.secrets_to_load }}
-        run: |
-          for s in ${{ inputs.secrets_to_load }}; do
-            echo ${s}=${{ secrets.${s} }} >> $GITHUB_ENV;
-          done;
+        uses: ./github/actions/load-secrets
+        with:
+          single-secret: ${{ secret.extra-secrets }}
       - run: env

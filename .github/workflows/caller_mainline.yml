@@ -1,10 +1,13 @@
 name: Caller
 on: 
-  pull_request:
+  push:
+    branches:
+      - "main"
 
 jobs:
-  reusable-preview:
+  reusable-deploy:
     name: call
+    environment: prod
     uses: foo-1a/gha-test/.github/workflows/called.yml@main
     with: {}
     secrets:

@@ -1,0 +1,11 @@
+name: load secrets
+description: load single secret into multiple envs
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - ${{ inputs.single-secret }}
+inputs:
+  single-secret:
+    description: single secret data struct
+    required: true
