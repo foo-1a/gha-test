@@ -3,6 +3,9 @@
 name: Reusable
 on:
   workflow_call:
+    inputs:
+      gh-env:
+        type: string
     secrets:
       extra-secrets:
         required: false
@@ -11,6 +14,7 @@ jobs:
   preview:
     name: Preview
     runs-on: ubuntu-latest
+    environment: ${{ inputs.env }}
     permissions:
       id-token: write
       contents: read

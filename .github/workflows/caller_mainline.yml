@@ -13,6 +13,6 @@ jobs:
       pull-requests: write
     uses: foo-1a/gha-test/.github/workflows/called.yml@main
     with:
-      environment: prod
+      gh-env: prod
     secrets:
       extra-secrets: ${{ secrets.EXTRA_SECRETS }}
