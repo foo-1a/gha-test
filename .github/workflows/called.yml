@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: load secrets
-        uses: ./github/actions/load-secrets
+        uses: .github/actions/load-secrets
         with:
           single-secret: ${{ secrets.extra-secrets }}
       - run: env
