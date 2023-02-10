@@ -22,3 +22,5 @@ jobs:
         with:
           single-secret: ${{ secrets.extra-secrets }}
       - run: env
+      - run: env | grep pr
+      - run: env | grep main
