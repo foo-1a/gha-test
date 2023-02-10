@@ -20,5 +20,5 @@ jobs:
       - name: load secrets
         uses: ./github/actions/load-secrets
         with:
-          single-secret: ${{ secret.extra-secrets }}
+          single-secret: ${{ secrets.extra-secrets }}
       - run: env

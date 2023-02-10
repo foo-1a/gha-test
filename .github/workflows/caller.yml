@@ -8,4 +8,4 @@ jobs:
     uses: foo-1a/gha-test/.github/workflows/called.yml@main
     with: {}
     secrets:
-      extra-secrets: ${{ secret.EXTRA_SECRETS }}
+      extra-secrets: ${{ secrets.EXTRA_SECRETS }}
