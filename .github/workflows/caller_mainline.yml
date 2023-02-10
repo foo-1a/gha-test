@@ -7,6 +7,10 @@ on:
 jobs:
   reusable-deploy:
     name: call
+    permissions:
+      id-token: write
+      contents: read
+      pull-requests: write
     environment: prod
     uses: foo-1a/gha-test/.github/workflows/called.yml@main
     with: {}

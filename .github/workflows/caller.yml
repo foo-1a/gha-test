@@ -5,6 +5,10 @@ on:
 jobs:
   reusable-preview:
     name: call
+    permissions:
+      id-token: write
+      contents: read
+      pull-requests: write
     uses: foo-1a/gha-test/.github/workflows/called.yml@main
     with: {}
     secrets:
