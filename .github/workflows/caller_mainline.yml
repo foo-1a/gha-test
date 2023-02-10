@@ -11,8 +11,8 @@ jobs:
       id-token: write
       contents: read
       pull-requests: write
-    environment: prod
     uses: foo-1a/gha-test/.github/workflows/called.yml@main
-    with: {}
+    with:
+      environment: prod
     secrets:
       extra-secrets: ${{ secrets.EXTRA_SECRETS }}
