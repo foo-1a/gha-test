@@ -22,7 +22,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: templating extra secrets test
-        run: echo somecommand ${{ secrets.extra-secrets != '' && format('--extraparam {0}', secrets.extra-secrets) }}
+        run: echo somecommand ${{ secrets.extra-secrets != '' && format('--extraparam {0}', secrets.extra-secrets) || '' }}
       - name: load secrets
         uses: ./.github/actions/load-secrets
         with:
