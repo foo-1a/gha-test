@@ -1,0 +1,15 @@
+name: brackets
+on: 
+  workflow_dispatch:
+
+jobs:
+  can-reference-nonexisting:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - secretref: API_SECRET
+          - secretref: DOES_NOT_EXIST
+    steps:
+    - run: echo ${{ secrets[matrix.secretref] }}
+  
