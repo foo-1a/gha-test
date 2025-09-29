@@ -13,3 +13,24 @@ jobs:
     with: {}
     secrets:
       extra-secrets: ${{ secrets.EXTRA_SECRETS }}
+
+  env-loading:
+    permissions:
+      id-token: write
+      contents: read
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
+      - id: loadenv
+        shell: bash
+        run: |
+          echo "::add-mask::val1"
+          echo "::add-mask::val2"
+          echo "loadedenv={\"VAR1\":\"val1\",\"VAR2\":\"val2\",}" >> $GITHUB_OUTPUT
+      - run: |
+          env | grep VAR
+        shell: bash
+        env:
+          <<: ${{ fromJSON(steps.loadenv.outputs.loadedenv) }}
+          VAR3: val3
+    
