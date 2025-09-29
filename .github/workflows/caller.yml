@@ -31,6 +31,6 @@ jobs:
           env | grep VAR
         shell: bash
         env:
-          <<: ${{ fromJSON(steps.loadenv.outputs.loadedenv) }}
+          <<: [ ${{ fromJSON(steps.loadenv.outputs.loadedenv) }} ]
           VAR3: val3
     
