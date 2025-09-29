@@ -26,12 +26,11 @@ jobs:
         run: |
           echo "::add-mask::val1"
           echo "::add-mask::val2"
-          echo "loadedenv={\"VAR1\":\"val1\",\"VAR2\":\"val2\",}" >> $GITHUB_OUTPUT
+          echo "loadedenv={\"VAR1\":\"val1\",\"VAR2\":\"val2\"}" >> $GITHUB_OUTPUT
+        env:
+          VAR3: val3
       - run: |
           env | grep VAR
         shell: bash
-        env: &loadedenv ${{ fromJSON(steps.loadenv.outputs.loadedenv) }}
-        env:
-          <<: *loadedenv
-          VAR3: val3
+        env: ${{ fromJSON(steps.loadenv.outputs.loadedenv) }}
     
