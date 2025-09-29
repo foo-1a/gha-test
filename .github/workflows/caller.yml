@@ -33,6 +33,6 @@ jobs:
           env | grep VAR
         shell: bash
         env:
-          <<: *hardcodedenv
+          <<: [*hardcodedenv]
           ${{ fromJSON(steps.loadenv.outputs.loadedenv) }}
     
